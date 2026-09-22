@@ -125,6 +125,9 @@
     var y = [1, 2, 3];
     for (var i = 0; i < 100000; ++i) y = [y];
     assert.deepEqual(_.flatten(y), [1, 2, 3], 'can handle extremely deeply nested arrays');
+
+    var mapped = _.map([[1, [2]], [3, [[4]]]], _.flatten);
+    assert.deepEqual(mapped, [[1, 2], [3, 4]], 'works well with _.map, ignoring the index as depth');
   });
 
   QUnit.test('without', function(assert) {
